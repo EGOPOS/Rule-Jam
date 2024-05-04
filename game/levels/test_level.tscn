@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://4cuhuc420kla"]
+
+[ext_resource type="PackedScene" uid="uid://vsn5pfn6vssf" path="res://game/levels/base_level.tscn" id="1_q47o5"]
+[ext_resource type="Texture2D" uid="uid://o5norl3r75jn" path="res://icon.png" id="2_0c3qp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_471ud"]
+size = Vector2(63.6, 60)
+
+[node name="TestLevel" instance=ExtResource("1_q47o5")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="world" index="1"]
+position = Vector2(597, 615)
+scale = Vector2(20, 1)
+
+[node name="Icon" type="Sprite2D" parent="world/StaticBody2D" index="0"]
+texture = ExtResource("2_0c3qp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/StaticBody2D" index="1"]
+position = Vector2(-0.0499992, 0)
+shape = SubResource("RectangleShape2D_471ud")

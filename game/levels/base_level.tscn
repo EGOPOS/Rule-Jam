@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://vsn5pfn6vssf"]
+
+[node name="BaseLevel" type="Node"]
+
+[node name="world" type="Node2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="world"]

@@ -6,12 +6,12 @@ extends CanvasLayer
 
 @onready var settings = %Settings
 
-@export var started_scene: String
+@export var started_scene: PackedScene
 
 func _ready():
 	var start = func():
 		get_tree().get_root().add_child(preload("res://game/userInterface/user_interface.tscn").instantiate())
-		get_tree().change_scene_to_file(started_scene)
+		get_tree().change_scene_to_packed(started_scene)
 
 	start_button.pressed.connect(start)
 	var settings = func():
