@@ -1,9 +1,9 @@
 extends Node
 
 var action_callables = {
-	"right": "",
-	"left": "",
-	"jump": "",
+	#"right": "",
+	#"left": "",
+	#"jump": "",
 }
 
 var _input_buffer: Array[String]

@@ -1,7 +1,19 @@
-[gd_scene format=3 uid="uid://vsn5pfn6vssf"]
+[gd_scene load_steps=4 format=3 uid="uid://vsn5pfn6vssf"]
+
+[ext_resource type="PackedScene" uid="uid://cmheqedjkgxtw" path="res://game/cursor.tscn" id="1_bjuea"]
+[ext_resource type="Script" path="res://game/levels/level.gd" id="1_w8uqr"]
+[ext_resource type="Script" path="res://game/levels/level_camera.gd" id="2_s63rc"]
 
 [node name="BaseLevel" type="Node"]
+script = ExtResource("1_w8uqr")
 
 [node name="world" type="Node2D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="world"]
+
+[node name="Cursor" parent="world" instance=ExtResource("1_bjuea")]
+
+[node name="Camera2D" type="Camera2D" parent="world" node_paths=PackedStringArray("cursor")]
+script = ExtResource("2_s63rc")
+cursor = NodePath("../Cursor")
+smoothing = 2.0

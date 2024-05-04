@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://4cuhuc420kla"]
+[gd_scene load_steps=5 format=3 uid="uid://4cuhuc420kla"]
 
 [ext_resource type="PackedScene" uid="uid://vsn5pfn6vssf" path="res://game/levels/base_level.tscn" id="1_q47o5"]
 [ext_resource type="Texture2D" uid="uid://o5norl3r75jn" path="res://icon.png" id="2_0c3qp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_471ud"]
 size = Vector2(63.6, 60)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0e3bi"]
+radius = 40.0
 
 [node name="TestLevel" instance=ExtResource("1_q47o5")]
 
@@ -18,3 +21,17 @@ texture = ExtResource("2_0c3qp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="world/StaticBody2D" index="1"]
 position = Vector2(-0.0499992, 0)
 shape = SubResource("RectangleShape2D_471ud")
+
+[node name="Cursor" parent="world" index="2"]
+position = Vector2(597, 538)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="world" index="4"]
+position = Vector2(599, 392)
+collision_layer = 4
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/RigidBody2D" index="0"]
+shape = SubResource("CircleShape2D_0e3bi")
+
+[node name="Sprite2D" type="Sprite2D" parent="world/RigidBody2D" index="1"]
+texture = ExtResource("2_0c3qp")
