@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cisx3ahfbdwml"]
 
-[ext_resource type="Script" path="res://game/geek/geek.gd" id="1_2g472"]
-[ext_resource type="Texture2D" uid="uid://enojkc40ecrx" path="res://assets/geek.png" id="2_1te80"]
+[ext_resource type="Script" path="res://game/grabbing/geek/geek.gd" id="1_8vr2k"]
+[ext_resource type="Texture2D" uid="uid://enojkc40ecrx" path="res://assets/geek.png" id="2_6h276"]
 
 [sub_resource type="Animation" id="Animation_suhcx"]
 length = 0.001
@@ -169,10 +169,10 @@ mass = 120.0
 center_of_mass_mode = 1
 center_of_mass = Vector2(0, 20)
 freeze_mode = 1
-script = ExtResource("1_2g472")
+script = ExtResource("1_8vr2k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_1te80")
+texture = ExtResource("2_6h276")
 hframes = 8
 frame = 4
 

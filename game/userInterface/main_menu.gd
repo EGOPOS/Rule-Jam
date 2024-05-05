@@ -11,7 +11,7 @@ extends CanvasLayer
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var start = func():
-		get_tree().get_root().add_child(preload("res://game/userInterface/user_interface.tscn").instantiate())
+		#get_tree().get_root().add_child(preload("res://game/userInterface/user_interface.tscn").instantiate())
 		get_tree().change_scene_to_packed(started_scene)
 
 	start_button.pressed.connect(start)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://4cuhuc420kla"]
+[gd_scene load_steps=5 format=3 uid="uid://4cuhuc420kla"]
 
 [ext_resource type="PackedScene" uid="uid://vsn5pfn6vssf" path="res://game/levels/base_level.tscn" id="1_q47o5"]
 [ext_resource type="Texture2D" uid="uid://o5norl3r75jn" path="res://icon.png" id="2_0c3qp"]
+[ext_resource type="PackedScene" uid="uid://bld35ta540et" path="res://game/grabbing/items/barrel.tscn" id="3_pqmdv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_471ud"]
 size = Vector2(63.6, 60)
@@ -62,3 +63,6 @@ position = Vector2(599, 538)
 
 [node name="Geek" parent="world" index="7"]
 position = Vector2(571, 555)
+
+[node name="Barrel" parent="world" index="8" instance=ExtResource("3_pqmdv")]
+position = Vector2(491, 485)

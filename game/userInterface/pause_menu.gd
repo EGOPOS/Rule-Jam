@@ -9,7 +9,6 @@ func _ready():
 	exit_button.pressed.connect(get_tree().quit)
 	main_menu_button.pressed.connect(func():
 		toggle(false)
-		get_tree().get_root().get_node("UserInterface").queue_free()
 		get_tree().change_scene_to_file("res://game/userInterface/main_menu.tscn"))
 	toggle(false)
 

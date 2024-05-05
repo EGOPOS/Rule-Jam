@@ -8,6 +8,7 @@
 [node name="Hud" parent="." instance=ExtResource("1_wbqqx")]
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_tlt8d")]
+visible = false
 
 [node name="Control" type="Control" parent="."]
 visible = false

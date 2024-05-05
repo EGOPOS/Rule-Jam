@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://vsn5pfn6vssf"]
+[gd_scene load_steps=6 format=3 uid="uid://vsn5pfn6vssf"]
 
 [ext_resource type="Script" path="res://game/levels/level.gd" id="1_w8uqr"]
+[ext_resource type="PackedScene" uid="uid://b5g62h42xdpyo" path="res://game/userInterface/user_interface.tscn" id="2_560gp"]
 [ext_resource type="Script" path="res://game/levels/level_camera.gd" id="2_s63rc"]
 [ext_resource type="PackedScene" uid="uid://cmheqedjkgxtw" path="res://game/cursor/cursor.tscn" id="2_yjyjy"]
-[ext_resource type="PackedScene" uid="uid://cisx3ahfbdwml" path="res://game/geek/geek.tscn" id="4_8d61n"]
+[ext_resource type="PackedScene" uid="uid://cisx3ahfbdwml" path="res://game/grabbing/geek/geek.tscn" id="4_8d61n"]
 
 [node name="BaseLevel" type="Node"]
 script = ExtResource("1_w8uqr")
+
+[node name="UserInterface" parent="." instance=ExtResource("2_560gp")]
 
 [node name="world" type="Node2D" parent="."]
 

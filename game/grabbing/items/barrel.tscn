@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bld35ta540et"]
+
+[ext_resource type="Script" path="res://game/grabbing/grabbing.gd" id="1_x113d"]
+[ext_resource type="Texture2D" uid="uid://o5norl3r75jn" path="res://icon.png" id="2_527om"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vsyt"]
+size = Vector2(45, 77)
+
+[node name="Barrel" type="RigidBody2D"]
+position = Vector2(3, -2)
+collision_layer = 4
+collision_mask = 5
+mass = 30.0
+script = ExtResource("1_x113d")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(0.742, 1.211)
+texture = ExtResource("2_527om")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 5)
+shape = SubResource("RectangleShape2D_1vsyt")
