@@ -8,7 +8,7 @@ var last_mouse_time: int
 func _ready():
 	global_position = cursor.global_position
 
-func _process(delta):
+func _physics_process(delta):
 	if (global_position - cursor.global_position).length() > 20.0:
 		global_position = global_position.lerp(cursor.global_position, delta * (1/smoothing)*10)
 		var new_mouse_position = lerp(get_window().get_mouse_position(), Vector2(get_viewport().size/2), delta * (1/smoothing)*10)

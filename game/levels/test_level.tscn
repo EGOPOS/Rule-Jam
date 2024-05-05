@@ -1,13 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://4cuhuc420kla"]
+[gd_scene load_steps=4 format=3 uid="uid://4cuhuc420kla"]
 
 [ext_resource type="PackedScene" uid="uid://vsn5pfn6vssf" path="res://game/levels/base_level.tscn" id="1_q47o5"]
 [ext_resource type="Texture2D" uid="uid://o5norl3r75jn" path="res://icon.png" id="2_0c3qp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_471ud"]
 size = Vector2(63.6, 60)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0e3bi"]
-radius = 40.0
 
 [node name="TestLevel" instance=ExtResource("1_q47o5")]
 
@@ -22,16 +19,46 @@ texture = ExtResource("2_0c3qp")
 position = Vector2(-0.0499992, 0)
 shape = SubResource("RectangleShape2D_471ud")
 
-[node name="Cursor" parent="world" index="2"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="world" index="2"]
+position = Vector2(561, 29)
+scale = Vector2(20, 1)
+
+[node name="Icon" type="Sprite2D" parent="world/StaticBody2D2" index="0"]
+texture = ExtResource("2_0c3qp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/StaticBody2D2" index="1"]
+position = Vector2(-0.0499992, 0)
+shape = SubResource("RectangleShape2D_471ud")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="world" index="3"]
+position = Vector2(-15.9999, 252)
+rotation = -1.57163
+scale = Vector2(20, 1)
+
+[node name="Icon" type="Sprite2D" parent="world/StaticBody2D3" index="0"]
+texture = ExtResource("2_0c3qp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/StaticBody2D3" index="1"]
+position = Vector2(-0.0499992, 0)
+shape = SubResource("RectangleShape2D_471ud")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="world" index="4"]
+position = Vector2(1201, 255)
+rotation = -1.57163
+scale = Vector2(20, 1)
+
+[node name="Icon" type="Sprite2D" parent="world/StaticBody2D4" index="0"]
+texture = ExtResource("2_0c3qp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="world/StaticBody2D4" index="1"]
+position = Vector2(-0.0499992, 0)
+shape = SubResource("RectangleShape2D_471ud")
+
+[node name="Cursor" parent="world" index="5"]
 position = Vector2(597, 538)
 
-[node name="RigidBody2D" type="RigidBody2D" parent="world" index="4"]
-position = Vector2(599, 392)
-collision_layer = 4
-collision_mask = 5
+[node name="Camera2D" parent="world" index="6"]
+position = Vector2(599, 538)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="world/RigidBody2D" index="0"]
-shape = SubResource("CircleShape2D_0e3bi")
-
-[node name="Sprite2D" type="Sprite2D" parent="world/RigidBody2D" index="1"]
-texture = ExtResource("2_0c3qp")
+[node name="Geek" parent="world" index="7"]
+position = Vector2(571, 555)
