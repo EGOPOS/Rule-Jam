@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bld35ta540et"]
+
+[ext_resource type="Script" path="res://game/items/barrel.gd" id="1_pqdpe"]
+[ext_resource type="Texture2D" uid="uid://o5norl3r75jn" path="res://icon.png" id="2_527om"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1vsyt"]
+size = Vector2(91, 154)
+
+[node name="Barrel" type="CharacterBody2D"]
+position = Vector2(3, -2)
+script = ExtResource("1_pqdpe")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(0, 5)
+scale = Vector2(1.48438, 2.42188)
+texture = ExtResource("2_527om")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 5)
+shape = SubResource("RectangleShape2D_1vsyt")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -47.0
+offset_top = -73.0
+offset_right = 46.0
+offset_bottom = 83.0
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
