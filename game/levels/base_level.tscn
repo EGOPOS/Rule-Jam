@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cmheqedjkgxtw" path="res://game/cursor/cursor.tscn" id="2_yjyjy"]
 [ext_resource type="PackedScene" uid="uid://cisx3ahfbdwml" path="res://game/grabbing/geek/geek.tscn" id="4_8d61n"]
 
-[node name="BaseLevel" type="Node"]
+[node name="BaseLevel" type="Node" node_paths=PackedStringArray("geek")]
 script = ExtResource("1_w8uqr")
+geek = NodePath("world/Geek")
 
 [node name="UserInterface" parent="." instance=ExtResource("2_560gp")]
 

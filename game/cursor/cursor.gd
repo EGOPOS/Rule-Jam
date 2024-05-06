@@ -20,7 +20,8 @@ func on_grab_enterd(body):
 
 func on_grab_exited(body):
 	await get_tree().physics_frame
-	body.ungrab()
+	if is_instance_valid(body):
+		body.ungrab()
 	object_to_grab = null
 
 func _physics_process(delta):

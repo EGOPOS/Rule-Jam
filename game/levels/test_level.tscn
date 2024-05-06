@@ -1,13 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://4cuhuc420kla"]
+[gd_scene load_steps=6 format=3 uid="uid://4cuhuc420kla"]
 
 [ext_resource type="PackedScene" uid="uid://vsn5pfn6vssf" path="res://game/levels/base_level.tscn" id="1_q47o5"]
 [ext_resource type="Texture2D" uid="uid://o5norl3r75jn" path="res://icon.png" id="2_0c3qp"]
 [ext_resource type="PackedScene" uid="uid://bld35ta540et" path="res://game/grabbing/items/barrel.tscn" id="3_pqmdv"]
+[ext_resource type="PackedScene" uid="uid://c3x0tnqdbkon5" path="res://game/items/collectable_item.tscn" id="4_yi01b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_471ud"]
 size = Vector2(63.6, 60)
 
-[node name="TestLevel" instance=ExtResource("1_q47o5")]
+[node name="TestLevel" node_paths=PackedStringArray("collectable_item") instance=ExtResource("1_q47o5")]
+next_level = ExtResource("1_q47o5")
+collectable_item = NodePath("world/CollectableItem")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="world" index="1"]
 position = Vector2(597, 615)
@@ -66,3 +69,8 @@ position = Vector2(571, 555)
 
 [node name="Barrel" parent="world" index="8" instance=ExtResource("3_pqmdv")]
 position = Vector2(491, 485)
+
+[node name="CollectableItem" parent="world" index="9" instance=ExtResource("4_yi01b")]
+position = Vector2(785, 560)
+collision_layer = 0
+collision_mask = 4
