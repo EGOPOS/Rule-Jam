@@ -6,6 +6,8 @@ class_name Geek extends Grabbing
 @onready var handing_collision = $HandingCollisionShape2D2
 @onready var marker = $Marker2D
 
+signal died
+
 func _ready():
 	animation_player.play("sitting")
 
