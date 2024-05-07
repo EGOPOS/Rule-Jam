@@ -50,6 +50,7 @@ func _physics_process(delta):
 	if Input.is_action_just_released("grab"):
 		ungrab()
 
+
 func grab():
 	object_to_grab.grab(global_position)
 

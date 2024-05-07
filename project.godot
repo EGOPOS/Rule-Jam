@@ -22,7 +22,6 @@ InputBuffer="*res://core/input_buffer.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://cursor.png"
 
 [input]

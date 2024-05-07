@@ -7,7 +7,7 @@ extends Node
 @export var geek: Geek
 
 func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
 	if collectable_item:
 		collectable_item.collected.connect(on_collectable_item_collected)
 	geek.died.connect(on_geek_died)
