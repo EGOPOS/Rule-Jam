@@ -9,10 +9,9 @@ func _ready():
 	global_position = cursor.global_position
 
 func _physics_process(delta):
-	print(get_window().size)
 	if (global_position - cursor.global_position).length() > 20.0:
 		global_position = global_position.lerp(cursor.global_position, delta * (1/smoothing)*10)
-		var new_mouse_position = lerp(get_window().get_mouse_position(), get_window().size/2, delta * (1/smoothing)*10)
+		var new_mouse_position = lerp(get_window().get_mouse_position(), Vector2(get_window().size/2), delta * (1/smoothing)*10)
 		DisplayServer.warp_mouse(Vector2i(new_mouse_position))
 	
 func _input(event):
