@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://vsn5pfn6vssf"]
+[gd_scene load_steps=7 format=3 uid="uid://vsn5pfn6vssf"]
 
 [ext_resource type="Script" path="res://game/levels/level.gd" id="1_w8uqr"]
 [ext_resource type="PackedScene" uid="uid://b5g62h42xdpyo" path="res://game/userInterface/user_interface.tscn" id="2_560gp"]
 [ext_resource type="Script" path="res://game/levels/level_camera.gd" id="2_s63rc"]
 [ext_resource type="PackedScene" uid="uid://cmheqedjkgxtw" path="res://game/cursor/cursor.tscn" id="2_yjyjy"]
 [ext_resource type="PackedScene" uid="uid://cisx3ahfbdwml" path="res://game/grabbing/geek/geek.tscn" id="4_8d61n"]
+[ext_resource type="TileSet" uid="uid://cg5b0u34toi71" path="res://assets/tile_set.tres" id="6_kaajm"]
 
 [node name="BaseLevel" type="Node" node_paths=PackedStringArray("geek")]
 script = ExtResource("1_w8uqr")
@@ -14,14 +15,18 @@ geek = NodePath("world/Geek")
 
 [node name="world" type="Node2D" parent="."]
 
+[node name="TileMap" type="TileMap" parent="world"]
+tile_set = ExtResource("6_kaajm")
+format = 2
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="world"]
 
 [node name="Cursor" parent="world" instance=ExtResource("2_yjyjy")]
+
+[node name="Geek" parent="world" instance=ExtResource("4_8d61n")]
 
 [node name="Camera2D" type="Camera2D" parent="world" node_paths=PackedStringArray("cursor")]
 zoom = Vector2(2, 2)
 script = ExtResource("2_s63rc")
 cursor = NodePath("../Cursor")
 smoothing = 2.0
-
-[node name="Geek" parent="world" instance=ExtResource("4_8d61n")]

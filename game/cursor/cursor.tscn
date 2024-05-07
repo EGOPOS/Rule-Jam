@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dymufetmmp5wy" path="res://assets/cursor.png" id="2_8wn0t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lwswd"]
+radius = 7.07107
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n1rah"]
 radius = 9.0
