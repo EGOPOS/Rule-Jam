@@ -9,6 +9,7 @@ class_name Cursor extends CharacterBody2D
 var object_to_grab: RigidBody2D
 
 @onready var animation_player = $AnimationPlayer
+@onready var hurt_area_component = $HurtAreaComponent2D
 
 func _ready():
 	grab_area.body_entered.connect(on_grab_enterd)
@@ -28,6 +29,9 @@ func _physics_process(delta):
 	var target_delta = get_global_mouse_position() - global_position
 	var direction = target_delta.normalized()
 	velocity = direction * delta * speed * target_delta.length()
+	
+	hurt_area_component.monitoring = velocity.length() > 800
+	
 	move_and_slide()
 	
 	if not object_to_grab:

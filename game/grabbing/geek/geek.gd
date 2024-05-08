@@ -21,6 +21,8 @@ func grab(grab_position):
 
 func ungrab():
 	super()
+	if not get_tree():
+		return
 	
 	get_tree().create_tween().tween_property(sprite, "position", Vector2(), 0.3)
 	get_tree().create_tween().tween_property(sitting_collision, "position", Vector2(-0.5, 11), 0.3)

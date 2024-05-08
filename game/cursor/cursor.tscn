@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cmheqedjkgxtw"]
+[gd_scene load_steps=13 format=3 uid="uid://cmheqedjkgxtw"]
 
 [ext_resource type="Script" path="res://game/cursor/cursor.gd" id="1_a30u1"]
 [ext_resource type="Texture2D" uid="uid://dymufetmmp5wy" path="res://assets/cursor.png" id="2_8wn0t"]
+[ext_resource type="Script" path="res://core/damage_components/2d/hurt_area_component.gd" id="3_qm3x4"]
+[ext_resource type="Script" path="res://core/damage_components/attack.gd" id="4_gji7e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lwswd"]
 radius = 7.07107
@@ -77,6 +79,10 @@ _data = {
 "ready_to_catch": SubResource("Animation_chxmg")
 }
 
+[sub_resource type="Resource" id="Resource_kgf7s"]
+script = ExtResource("4_gji7e")
+damage = 1
+
 [node name="Cursor" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 3
@@ -106,3 +112,12 @@ frame = 1
 libraries = {
 "": SubResource("AnimationLibrary_rl53h")
 }
+
+[node name="HurtAreaComponent2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_qm3x4")
+attack = SubResource("Resource_kgf7s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtAreaComponent2D"]
+shape = SubResource("CircleShape2D_lwswd")
