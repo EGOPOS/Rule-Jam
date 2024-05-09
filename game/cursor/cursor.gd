@@ -30,7 +30,7 @@ func _physics_process(delta):
 	var direction = target_delta.normalized()
 	velocity = direction * delta * speed * target_delta.length()
 	
-	hurt_area_component.monitoring = velocity.length() > 800
+	hurt_area_component.monitoring = velocity.length() > 1000
 	
 	move_and_slide()
 	
