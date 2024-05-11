@@ -23,3 +23,7 @@ func on_collectable_item_collected():
 		get_tree().change_scene_to_packed(next_level)
 	else:
 		get_tree().change_scene_to_file("res://game/userInterface/main_menu.tscn")
+
+func _input(event):
+	if Input.is_action_just_pressed("restart"):
+		get_tree().reload_current_scene()
