@@ -8,7 +8,7 @@ var target_position: Vector2
 
 func _ready():
 	global_position = cursor.global_position
-	target_position = get_window().size/2
+	target_position = Vector2(1152, 648) / 2
 
 func _physics_process(delta):
 	if (global_position - cursor.global_position).length() > 20.0:

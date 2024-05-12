@@ -1,11 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqrgi4gamtasr"]
+[gd_scene load_steps=6 format=3 uid="uid://bqrgi4gamtasr"]
 
 [ext_resource type="Script" path="res://game/userInterface/pause_menu.gd" id="1_281p1"]
 [ext_resource type="PackedScene" uid="uid://bnt3uacv55nwv" path="res://game/userInterface/settings.tscn" id="1_c6qck"]
+[ext_resource type="Script" path="res://core/ui/control_sounds_component.gd" id="2_m4xle"]
+[ext_resource type="AudioStream" uid="uid://ctre8vdeyxrtj" path="res://assets/ui/click1.wav" id="3_unvs6"]
+[ext_resource type="AudioStream" uid="uid://8alplouulrdo" path="res://assets/ui/click2.wav" id="4_hu2yh"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_281p1")
+
+[node name="ControlSoundsComponent" type="Node" parent="." node_paths=PackedStringArray("controls_container")]
+script = ExtResource("2_m4xle")
+controls_container = NodePath("../HBoxContainer/Buttons")
+button_pressed_stream = ExtResource("3_unvs6")
+option_selected_stream = ExtResource("4_hu2yh")
+slider_drag_stream = ExtResource("3_unvs6")
+slider_changed_stream = ExtResource("4_hu2yh")
+tab_selected_stream = ExtResource("3_unvs6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ControlSoundsComponent"]
+stream = ExtResource("4_hu2yh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 process_mode = 3

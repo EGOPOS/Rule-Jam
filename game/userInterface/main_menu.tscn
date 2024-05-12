@@ -16,7 +16,7 @@ started_scene = ExtResource("2_8em56")
 
 [node name="ControlSoundsComponent" type="Node" parent="." node_paths=PackedStringArray("controls_container")]
 script = ExtResource("2_eb3g1")
-controls_container = NodePath("../Control")
+controls_container = NodePath("../Control/ButtonsMarginContainer")
 button_pressed_stream = ExtResource("4_5xs1d")
 option_selected_stream = ExtResource("3_uovc3")
 slider_drag_stream = ExtResource("4_5xs1d")

@@ -1,11 +1,14 @@
 extends Area2D
 
 @export_multiline var text: String = ""
+@export var text_scale: float = 1.0
 @export var smoothing_time: float = 2.0
 @onready var label = %Label
 
 func _ready():
 	label.modulate.a = 0
+	label.scale = Vector2.ONE * text_scale
+	label.position *= text_scale
 	var counter: int = 0
 	var char_counter: int = 0
 	var new_text: String = text

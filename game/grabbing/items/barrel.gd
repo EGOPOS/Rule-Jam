@@ -23,6 +23,6 @@ func boom():
 func throw_body(body):
 	if body is RigidBody2D:# and body != self:
 		await get_tree().physics_frame
-		body.apply_central_impulse((body.global_position.direction_to(global_position)+Vector2.UP*3).normalized() * 75000)
+		body.apply_central_impulse((global_position.direction_to(body.global_position)+Vector2.UP*3).normalized() * 75000)
 		print(body)
 

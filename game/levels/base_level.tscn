@@ -13,13 +13,23 @@ geek = NodePath("world/Geek")
 
 [node name="UserInterface" parent="." instance=ExtResource("2_560gp")]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(50000, 50000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.340165, 0.650166, 0.924111, 1)
+metadata/_edit_lock_ = true
+
 [node name="world" type="Node2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="world"]
 
 [node name="TileMap" type="TileMap" parent="world"]
 tile_set = ExtResource("6_kaajm")
 format = 2
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="world"]
 
 [node name="Cursor" parent="world" instance=ExtResource("2_yjyjy")]
 

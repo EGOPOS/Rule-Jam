@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnt3uacv55nwv"]
+[gd_scene load_steps=5 format=3 uid="uid://bnt3uacv55nwv"]
 
 [ext_resource type="Script" path="res://game/userInterface/settings.gd" id="1_ghwof"]
+[ext_resource type="Script" path="res://core/ui/control_sounds_component.gd" id="2_mm7ln"]
+[ext_resource type="AudioStream" uid="uid://ctre8vdeyxrtj" path="res://assets/ui/click1.wav" id="3_rclaf"]
+[ext_resource type="AudioStream" uid="uid://8alplouulrdo" path="res://assets/ui/click2.wav" id="4_04tjk"]
 
 [node name="Settings" type="Control"]
 custom_minimum_size = Vector2(420, 250)
@@ -17,6 +20,18 @@ offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ghwof")
+
+[node name="ControlSoundsComponent" type="Node" parent="." node_paths=PackedStringArray("controls_container")]
+script = ExtResource("2_mm7ln")
+controls_container = NodePath("../TabContainer")
+button_pressed_stream = ExtResource("3_rclaf")
+option_selected_stream = ExtResource("4_04tjk")
+slider_drag_stream = ExtResource("3_rclaf")
+slider_changed_stream = ExtResource("4_04tjk")
+tab_selected_stream = ExtResource("3_rclaf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ControlSoundsComponent"]
+stream = ExtResource("4_04tjk")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(420, 240)

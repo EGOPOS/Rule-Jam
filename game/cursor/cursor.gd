@@ -7,6 +7,7 @@ class_name Cursor extends CharacterBody2D
 
 @onready var grab_area = $GrabArea2D
 var object_to_grab: RigidBody2D
+var can_grab = true
 
 @onready var animation_player = $AnimationPlayer
 @onready var hurt_area_component = $HurtAreaComponent2D
@@ -14,6 +15,16 @@ var object_to_grab: RigidBody2D
 func _ready():
 	grab_area.body_entered.connect(on_grab_enterd)
 	grab_area.body_exited.connect(on_grab_exited)
+	grab_area.area_entered.connect(on_area_entered)
+	grab_area.area_exited.connect(on_area_exited)
+
+func on_area_entered(area):
+	if area.is_in_group("ungrab"):
+		can_grab = false
+	
+func on_area_exited(area):
+	if area.is_in_group("ungrab"):
+		can_grab = true
 
 func on_grab_enterd(body):
 	if body is RigidBody2D:
@@ -34,7 +45,7 @@ func _physics_process(delta):
 	
 	move_and_slide()
 	
-	if not object_to_grab:
+	if not object_to_grab or not can_grab:
 		animation_player.play("idle")
 		if grab_area.get_overlapping_bodies().size():
 			object_to_grab = grab_area.get_overlapping_bodies()[0]
