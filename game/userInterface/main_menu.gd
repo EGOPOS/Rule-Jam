@@ -9,13 +9,19 @@ extends CanvasLayer
 @export var started_scene: PackedScene
 
 func _ready():
+	Fade.fade_in()
+	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var start = func():
 		#get_tree().get_root().add_child(preload("res://game/userInterface/user_interface.tscn").instantiate())
+		await Fade.fade_out().finished
 		get_tree().change_scene_to_packed(started_scene)
 
 	start_button.pressed.connect(start)
 	var settings = func():
 		self.settings.visible = !self.settings.visible
 	settings_button.pressed.connect(settings)
-	exit_button.pressed.connect(get_tree().quit)
+	exit_button.pressed.connect(func():
+		await Fade.fade_out().finished
+		get_tree().quit()
+	)

@@ -27,7 +27,7 @@ func on_area_exited(area):
 		can_grab = true
 
 func on_grab_enterd(body):
-	if body is RigidBody2D:
+	if body is Grabbing:
 		object_to_grab = body
 
 func on_grab_exited(body):

@@ -13,6 +13,8 @@ func _ready():
 	for trigger in triggers:
 		trigger.changed.connect(handle)
 
+var trans_tween: Tween
+
 func handle(value):
 	if shoted:
 		return
@@ -21,6 +23,10 @@ func handle(value):
 		if not trigger.value:
 			open = false
 	
-	get_tree().create_tween().tween_property(self, "rotation", deg_to_rad(to_rotation_degrees) if open else deg_to_rad(from_rotation_degrees), (to_transition_time if open else from_transition_time * ((from_rotation_degrees - rotation_degrees)/(from_rotation_degrees - to_rotation_degrees))))
-	if one_shot:
-		shoted = true
+	if get_tree():
+		if trans_tween:
+			trans_tween.stop()
+		trans_tween = get_tree().create_tween()
+		trans_tween.tween_property(self, "rotation", deg_to_rad(to_rotation_degrees) if open else deg_to_rad(from_rotation_degrees), (to_transition_time if open else from_transition_time * ((from_rotation_degrees - rotation_degrees)/(from_rotation_degrees - to_rotation_degrees))))
+		if one_shot:
+			shoted = true

@@ -6,8 +6,11 @@ extends CanvasLayer
 
 func _ready():
 	continue_button.pressed.connect(toggle.bind(false))
-	exit_button.pressed.connect(get_tree().quit)
+	exit_button.pressed.connect(func():
+		await Fade.fade_out(0.5).finished
+		get_tree().quit())
 	main_menu_button.pressed.connect(func():
+		await Fade.fade_out(0.5).finished
 		toggle(false)
 		get_tree().change_scene_to_file("res://game/userInterface/main_menu.tscn"))
 	toggle(false)
