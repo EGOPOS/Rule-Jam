@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://biiyxcj24dnvl"]
+
+[ext_resource type="Script" path="res://game/levels/bridge.gd" id="1_3xrei"]
+[ext_resource type="Texture2D" uid="uid://o5norl3r75jn" path="res://icon.png" id="2_1pv8i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_040u0"]
+atlas = ExtResource("2_1pv8i")
+region = Rect2(57, 0, 7, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6q1s0"]
+size = Vector2(6, 64)
+
+[node name="Bridge" type="Node2D"]
+script = ExtResource("1_3xrei")
+to_transition_time = 1.5
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, -32)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = SubResource("AtlasTexture_040u0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_6q1s0")

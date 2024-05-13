@@ -93,10 +93,13 @@ func _ready():
 	
 	if SaveManager.get_key("settings", "master_audio"):
 		master_slider.value_changed.emit(SaveManager.get_key("settings", "master_audio"))
+		master_slider.value = SaveManager.get_key("settings", "master_audio")
 	if SaveManager.get_key("settings", "sfx_audio"):
 		sfx_slider.value_changed.emit(SaveManager.get_key("settings", "sfx_audio"))
+		sfx_slider.value = SaveManager.get_key("settings", "sfx_audio")
 	if SaveManager.get_key("settings", "music_audio"):
 		music_slider.value_changed.emit(SaveManager.get_key("settings", "music_audio"))
+		music_slider.value = SaveManager.get_key("settings", "music_audio")
 	
 	if SaveManager.get_key("settings", "vsync"):
 		v_sync_check_box.button_pressed = SaveManager.get_key("settings", "vsync")

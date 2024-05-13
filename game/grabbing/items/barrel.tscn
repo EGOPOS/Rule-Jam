@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bld35ta540et"]
+[gd_scene load_steps=16 format=3 uid="uid://bld35ta540et"]
 
 [ext_resource type="Script" path="res://game/grabbing/items/barrel.gd" id="1_lam7j"]
 [ext_resource type="Texture2D" uid="uid://c85lc702f7u3m" path="res://assets/barrel.png" id="2_h66sc"]
@@ -16,6 +16,18 @@ damage = 1
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rbaqg"]
 radius = 52.0096
+
+[sub_resource type="Gradient" id="Gradient_vkt85"]
+offsets = PackedFloat32Array(0.368664, 0.654378, 0.741935, 0.834101, 1)
+colors = PackedColorArray(0.946261, 0.792624, 0.160678, 1, 1, 0.52216, 0.179152, 1, 0.874326, 0.123411, 0.154322, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_0ykbi"]
+offsets = PackedFloat32Array(0.442396, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_2beta"]
+offsets = PackedFloat32Array(0.170507, 0.442396, 1)
+colors = PackedColorArray(1, 0.195285, 0.135182, 1, 1, 0.75915, 0.0983773, 1, 0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_yrs8e"]
 length = 0.001
@@ -78,6 +90,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CPUParticles2D2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CPUParticles2D3:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_lvxxl"]
@@ -143,6 +179,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CPUParticles2D2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CPUParticles2D3:emitting")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uyofs"]
 _data = {
@@ -184,7 +244,7 @@ shape = SubResource("CircleShape2D_rbaqg")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
-lifetime = 3.0
+lifetime = 1.5
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
@@ -196,6 +256,39 @@ initial_velocity_min = 50.0
 initial_velocity_max = 125.0
 scale_amount_min = 1.2
 scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_vkt85")
+
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+scale_amount_min = 6.0
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_0ykbi")
+
+[node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 4
+lifetime = 0.5
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+particle_flag_align_y = true
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 6.0
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_2beta")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 2)

@@ -1,7 +1,7 @@
 extends Node
 
-@export var next_level: PackedScene
-@export var previos_level: PackedScene
+@export var next_level_path: String
+@export var previos_level_path: String
 
 @export var collectable_item: CollectableItem
 @export var geek: Geek
@@ -13,14 +13,14 @@ func _ready():
 	geek.died.connect(on_geek_died)
 
 func on_geek_died():
-	if previos_level:
-		get_tree().change_scene_to_packed(previos_level)
+	if previos_level_path:
+		get_tree().change_scene_to_file(previos_level_path)
 	else:
 		get_tree().reload_current_scene()
 
 func on_collectable_item_collected():
-	if next_level:
-		get_tree().change_scene_to_packed(next_level)
+	if next_level_path:
+		get_tree().change_scene_to_file(next_level_path)
 	else:
 		get_tree().change_scene_to_file("res://game/userInterface/main_menu.tscn")
 

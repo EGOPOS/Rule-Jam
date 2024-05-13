@@ -1,12 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b74fs1uol45q7"]
+[gd_scene load_steps=4 format=3 uid="uid://b74fs1uol45q7"]
 
-[ext_resource type="PackedScene" uid="uid://vsn5pfn6vssf" path="res://game/levels/base_level.tscn" id="1_o54oe"]
-[ext_resource type="PackedScene" uid="uid://4cuhuc420kla" path="res://game/levels/test_level.tscn" id="2_8paa6"]
+[ext_resource type="PackedScene" uid="uid://vsn5pfn6vssf" path="res://game/levels/base_level.tscn" id="2_8paa6"]
 [ext_resource type="PackedScene" uid="uid://owksch2px4rt" path="res://game/levels/smooth_text_area_2d.tscn" id="3_f0dxw"]
 [ext_resource type="PackedScene" uid="uid://bdwwovsk8y7yv" path="res://game/levels/ungrab_area_2d.tscn" id="4_ww5rq"]
 
-[node name="FirstLevel" instance=ExtResource("1_o54oe")]
-previos_level = ExtResource("2_8paa6")
+[node name="FirstLevel" instance=ExtResource("2_8paa6")]
+previos_level_path = "res://game/levels/test_level.tscn"
 
 [node name="ColorRect" parent="." index="1"]
 color = Color(0.424529, 0.340218, 0.473241, 1)

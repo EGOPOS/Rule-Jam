@@ -68,6 +68,8 @@ func _physics_process(delta):
 
 func grab():
 	object_to_grab.grab(global_position)
+	hurt_area_component.get_child(0).disabled = true
 
 func ungrab():
 	object_to_grab.ungrab()
+	hurt_area_component.get_child(0).disabled = false
