@@ -18,16 +18,21 @@ config/name="Rule Jam"
 config/description="Enter an interesting project description here!"
 run/main_scene="res://game/userInterface/main_menu.tscn"
 config/features=PackedStringArray("4.2")
-config/icon="res://icon.png"
+config/icon="res://export_ico.png"
 
 [autoload]
 
 InputBuffer="*res://core/input_buffer.gd"
 SaveManager="*res://core/save_manager/save_manager.gd"
+GameManager="*res://game/game_manager.gd"
 
 [display]
 
 mouse_cursor/custom_image="res://cursor.png"
+
+[editor_plugins]
+
+enabled=PackedStringArray()
 
 [input]
 

@@ -15,6 +15,8 @@ func _ready():
 	Fade.fade_in()
 
 func on_geek_died():
+	GameManager.deaths += 1
+	GameManager.transitions += 1
 	await Fade.fade_out().finished
 	
 	if previos_level_path:
@@ -23,6 +25,7 @@ func on_geek_died():
 		get_tree().reload_current_scene()
 
 func on_collectable_item_collected():
+	GameManager.transitions += 1
 	await Fade.fade_out().finished
 	
 	if next_level_path:

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cisx3ahfbdwml"]
+[gd_scene load_steps=13 format=3 uid="uid://cisx3ahfbdwml"]
 
 [ext_resource type="Script" path="res://game/grabbing/geek/geek.gd" id="1_8vr2k"]
 [ext_resource type="Texture2D" uid="uid://enojkc40ecrx" path="res://assets/geek.png" id="2_6h276"]
+[ext_resource type="Script" path="res://core/damage_components/2d/hurt_area_component.gd" id="3_ywtlk"]
+[ext_resource type="Script" path="res://core/damage_components/attack.gd" id="4_tgl16"]
 
 [sub_resource type="Animation" id="Animation_suhcx"]
 length = 0.001
@@ -162,6 +164,13 @@ radius = 14.5344
 radius = 11.5
 height = 50.0
 
+[sub_resource type="Resource" id="Resource_ixeai"]
+script = ExtResource("4_tgl16")
+damage = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mh5p4"]
+radius = 19.0263
+
 [node name="Geek" type="RigidBody2D"]
 collision_layer = 4
 collision_mask = 5
@@ -193,3 +202,13 @@ disabled = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(0, -15)
+
+[node name="HurtAreaComponent2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("3_ywtlk")
+attack = SubResource("Resource_ixeai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtAreaComponent2D"]
+position = Vector2(0, 11)
+shape = SubResource("CircleShape2D_mh5p4")

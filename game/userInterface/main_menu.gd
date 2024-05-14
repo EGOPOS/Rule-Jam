@@ -14,6 +14,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	var start = func():
 		#get_tree().get_root().add_child(preload("res://game/userInterface/user_interface.tscn").instantiate())
+		GameManager.start_time = Time.get_ticks_msec()
 		await Fade.fade_out().finished
 		get_tree().change_scene_to_packed(started_scene)
 

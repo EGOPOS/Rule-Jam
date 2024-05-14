@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://pg107sskwqdf"]
 
 [ext_resource type="Script" path="res://game/userInterface/main_menu.gd" id="1_h1lnw"]
-[ext_resource type="PackedScene" uid="uid://4cuhuc420kla" path="res://game/levels/test_level.tscn" id="2_8em56"]
+[ext_resource type="PackedScene" uid="uid://b74fs1uol45q7" path="res://game/levels/level_1.tscn" id="2_c21eb"]
 [ext_resource type="Script" path="res://core/ui/control_sounds_component.gd" id="2_eb3g1"]
 [ext_resource type="PackedScene" uid="uid://bnt3uacv55nwv" path="res://game/userInterface/settings.tscn" id="2_hj6gs"]
 [ext_resource type="AudioStream" uid="uid://8alplouulrdo" path="res://assets/ui/click2.wav" id="3_uovc3"]
@@ -9,7 +9,7 @@
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_h1lnw")
-started_scene = ExtResource("2_8em56")
+started_scene = ExtResource("2_c21eb")
 
 [node name="ControlSoundsComponent" type="Node" parent="." node_paths=PackedStringArray("controls_container")]
 script = ExtResource("2_eb3g1")

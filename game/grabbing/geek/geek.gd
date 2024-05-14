@@ -5,6 +5,7 @@ class_name Geek extends Grabbing
 @onready var sitting_collision = $SittingCollisionShape2D
 @onready var handing_collision = $HandingCollisionShape2D2
 @onready var marker = $Marker2D
+@onready var hurt_area_component = $HurtAreaComponent2D
 
 signal died
 
@@ -28,3 +29,6 @@ func ungrab():
 	get_tree().create_tween().tween_property(sitting_collision, "position", Vector2(-0.5, 11), 0.3)
 	get_tree().create_tween().tween_property(handing_collision, "position", Vector2(-0.5, 0), 0.3)
 	animation_player.play("sitting")
+
+func _physics_process(delta):
+	hurt_area_component.monitoring = linear_velocity.length() > 300

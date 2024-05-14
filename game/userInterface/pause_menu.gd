@@ -9,6 +9,7 @@ func _ready():
 	exit_button.pressed.connect(func():
 		await Fade.fade_out(0.5).finished
 		get_tree().quit())
+	
 	main_menu_button.pressed.connect(func():
 		await Fade.fade_out(0.5).finished
 		toggle(false)

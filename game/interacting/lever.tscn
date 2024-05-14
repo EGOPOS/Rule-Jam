@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://n6aoagicsrwn"]
+
+[ext_resource type="Script" path="res://game/signal/signal.gd" id="1_ycfvl"]
+[ext_resource type="Texture2D" uid="uid://ccpxxmtpq0kxj" path="res://assets/lever.png" id="2_5t8kw"]
+[ext_resource type="Script" path="res://game/interacting/lever.gd" id="3_iuxdi"]
+
+[sub_resource type="GDScript" id="GDScript_qbg6i"]
+script/source = "extends Sprite2D
+
+func _ready():
+	owner.changed.connect(func(value):
+		frame = 1 if value else 0
+	)
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_765wk"]
+radius = 6.0
+
+[node name="Lever" type="Node2D"]
+script = ExtResource("1_ycfvl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_5t8kw")
+hframes = 2
+script = SubResource("GDScript_qbg6i")
+
+[node name="Interacting" type="Area2D" parent="."]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_iuxdi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interacting"]
+shape = SubResource("CircleShape2D_765wk")

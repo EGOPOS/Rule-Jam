@@ -6,8 +6,11 @@ class_name Cursor extends CharacterBody2D
 #@export var friction: float = 1.0
 
 @onready var grab_area = $GrabArea2D
-var object_to_grab: RigidBody2D
+var object_to_grab: Grabbing
+var object_to_interact: Interacting
 var can_grab = true
+var can_dash: bool = true
+var minimum_dash_velocity: int = 1200
 
 @onready var animation_player = $AnimationPlayer
 @onready var hurt_area_component = $HurtAreaComponent2D
@@ -21,10 +24,14 @@ func _ready():
 func on_area_entered(area):
 	if area.is_in_group("ungrab"):
 		can_grab = false
+	if area is Interacting:
+		object_to_interact = area
 	
 func on_area_exited(area):
 	if area.is_in_group("ungrab"):
 		can_grab = true
+	if area is Interacting:
+		object_to_interact = null
 
 func on_grab_enterd(body):
 	if body is Grabbing:
@@ -41,11 +48,16 @@ func _physics_process(delta):
 	var direction = target_delta.normalized()
 	velocity = direction * delta * speed * target_delta.length()
 	
-	hurt_area_component.monitoring = velocity.length() > 1000
+	hurt_area_component.monitoring = velocity.length() > minimum_dash_velocity
+	#can_dash = velocity.length() > minimum_dash_velocity
+	#print(can_dash)
+	#if can_dash and velocity.length() > minimum_dash_velocity:
+		#velocity *= 3.0
+		#can_dash = false
 	
 	move_and_slide()
 	
-	if not object_to_grab or not can_grab:
+	if (not object_to_grab or not can_grab) and not object_to_interact:
 		animation_player.play("idle")
 		if grab_area.get_overlapping_bodies().size():
 			object_to_grab = grab_area.get_overlapping_bodies()[0]
@@ -53,11 +65,13 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("grab"):
 		grab()
+		interact()
 	
 	if Input.is_action_pressed("grab"):
 		#object_to_grab.global_position += direction * delta * grabbing_speed * target_delta.length()
-		object_to_grab.linear_velocity = direction * delta * grabbing_speed * target_delta.length()
-		animation_player.play("catch")
+		if object_to_grab:
+			object_to_grab.linear_velocity = direction * delta * grabbing_speed * target_delta.length()
+			animation_player.play("catch")
 		grab()
 	else:
 		animation_player.play("ready_to_catch")
@@ -67,9 +81,15 @@ func _physics_process(delta):
 
 
 func grab():
-	object_to_grab.grab(global_position)
-	hurt_area_component.get_child(0).disabled = true
+	if object_to_grab:
+		object_to_grab.grab(global_position)
+		hurt_area_component.get_child(0).disabled = true
 
 func ungrab():
-	object_to_grab.ungrab()
-	hurt_area_component.get_child(0).disabled = false
+	if object_to_grab:
+		object_to_grab.ungrab()
+		hurt_area_component.get_child(0).disabled = false
+
+func interact():
+	if object_to_interact:
+		object_to_interact.interact(global_position)
