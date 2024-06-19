@@ -1,15 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://n6aoagicsrwn"]
+[gd_scene load_steps=7 format=3 uid="uid://n6aoagicsrwn"]
 
 [ext_resource type="Script" path="res://game/signal/signal.gd" id="1_ycfvl"]
 [ext_resource type="Texture2D" uid="uid://ccpxxmtpq0kxj" path="res://assets/lever.png" id="2_5t8kw"]
 [ext_resource type="Script" path="res://game/interacting/lever.gd" id="3_iuxdi"]
+[ext_resource type="AudioStream" uid="uid://y6r6tjojbp80" path="res://assets/sounds/switch.mp3" id="4_0pj7c"]
 
 [sub_resource type="GDScript" id="GDScript_qbg6i"]
 script/source = "extends Sprite2D
+@onready var changed_player = $\"../ChangedAudioStreamPlayer\"
 
 func _ready():
 	owner.changed.connect(func(value):
 		frame = 1 if value else 0
+		changed_player.play()
 	)
 "
 
@@ -20,7 +23,7 @@ radius = 6.0
 script = ExtResource("1_ycfvl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2, 2)
+position = Vector2(0, -4)
 texture = ExtResource("2_5t8kw")
 hframes = 2
 script = SubResource("GDScript_qbg6i")
@@ -33,3 +36,8 @@ script = ExtResource("3_iuxdi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interacting"]
 shape = SubResource("CircleShape2D_765wk")
+
+[node name="ChangedAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_0pj7c")
+max_distance = 400.0
+bus = &"Sfx"

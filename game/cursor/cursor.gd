@@ -15,6 +15,9 @@ var minimum_dash_velocity: int = 1200
 @onready var animation_player = $AnimationPlayer
 @onready var hurt_area_component = $HurtAreaComponent2D
 
+@onready var grab_player = $GrabAudioStreamPlayer
+@onready var ungrab_player = $UngrabAudioStreamPlayer
+
 func _ready():
 	grab_area.body_entered.connect(on_grab_enterd)
 	grab_area.body_exited.connect(on_grab_exited)
@@ -64,6 +67,7 @@ func _physics_process(delta):
 		return
 	
 	if Input.is_action_just_pressed("grab"):
+		grab_player.play()
 		grab()
 		interact()
 	
@@ -77,6 +81,7 @@ func _physics_process(delta):
 		animation_player.play("ready_to_catch")
 	
 	if Input.is_action_just_released("grab"):
+		ungrab_player.play()
 		ungrab()
 
 

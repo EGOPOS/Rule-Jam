@@ -24,7 +24,7 @@ config/icon="res://export_ico.png"
 
 InputBuffer="*res://core/input_buffer.gd"
 SaveManager="*res://core/save_manager/save_manager.gd"
-GameManager="*res://game/game_manager.gd"
+GameManager="*res://game/game_manager.tscn"
 
 [display]
 
@@ -33,6 +33,10 @@ mouse_cursor/custom_image="res://cursor.png"
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[gui]
+
+theme/custom_font="res://assets/vcrosdmonorusbyd.ttf"
 
 [input]
 
@@ -55,3 +59,4 @@ restart={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+viewport/hdr_2d=true

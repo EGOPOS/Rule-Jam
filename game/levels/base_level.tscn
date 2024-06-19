@@ -1,11 +1,35 @@
-[gd_scene load_steps=7 format=3 uid="uid://vsn5pfn6vssf"]
+[gd_scene load_steps=11 format=3 uid="uid://vsn5pfn6vssf"]
 
 [ext_resource type="Script" path="res://game/levels/level.gd" id="1_w8uqr"]
 [ext_resource type="PackedScene" uid="uid://b5g62h42xdpyo" path="res://game/userInterface/user_interface.tscn" id="2_560gp"]
 [ext_resource type="Script" path="res://game/levels/level_camera.gd" id="2_s63rc"]
 [ext_resource type="PackedScene" uid="uid://cmheqedjkgxtw" path="res://game/cursor/cursor.tscn" id="2_yjyjy"]
+[ext_resource type="Texture2D" uid="uid://dmpk8nxlu0abp" path="res://assets/sky.png" id="3_ry14n"]
 [ext_resource type="PackedScene" uid="uid://cisx3ahfbdwml" path="res://game/grabbing/geek/geek.tscn" id="4_8d61n"]
+[ext_resource type="Texture2D" uid="uid://c727ki62lceka" path="res://assets/ground.png" id="4_hdl5d"]
 [ext_resource type="TileSet" uid="uid://cg5b0u34toi71" path="res://assets/tile_set.tres" id="6_kaajm"]
+
+[sub_resource type="GDScript" id="GDScript_cucy6"]
+script/source = "extends ParallaxBackground
+
+var target_position: Vector2
+
+func _ready():
+	target_position = Vector2(1152, 648) / 2
+
+func _process(delta):
+	if Vector2(get_window().size/2) != target_position:
+		scale *= Vector2(get_window().size/2)/target_position
+		target_position = get_window().size/2
+"
+
+[sub_resource type="Environment" id="Environment_g8ovw"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_strength = 0.65
+glow_bloom = 0.5
+glow_blend_mode = 0
 
 [node name="BaseLevel" type="Node" node_paths=PackedStringArray("geek")]
 script = ExtResource("1_w8uqr")
@@ -13,7 +37,31 @@ geek = NodePath("world/Geek")
 
 [node name="UserInterface" parent="." instance=ExtResource("2_560gp")]
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+process_mode = 3
+scroll_ignore_camera_zoom = true
+script = SubResource("GDScript_cucy6")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(2, 2)
+texture = ExtResource("3_ry14n")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("4_hdl5d")
+centered = false
+
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(50000, 50000)
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +74,7 @@ metadata/_edit_lock_ = true
 [node name="world" type="Node2D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="world"]
+environment = SubResource("Environment_g8ovw")
 
 [node name="TileMap" type="TileMap" parent="world"]
 tile_set = ExtResource("6_kaajm")
@@ -36,6 +85,7 @@ format = 2
 [node name="Geek" parent="world" instance=ExtResource("4_8d61n")]
 
 [node name="Camera2D" type="Camera2D" parent="world" node_paths=PackedStringArray("cursor")]
+process_mode = 3
 zoom = Vector2(2, 2)
 script = ExtResource("2_s63rc")
 cursor = NodePath("../Cursor")

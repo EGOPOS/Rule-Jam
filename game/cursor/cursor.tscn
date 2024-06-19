@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmheqedjkgxtw"]
+[gd_scene load_steps=15 format=3 uid="uid://cmheqedjkgxtw"]
 
 [ext_resource type="Script" path="res://game/cursor/cursor.gd" id="1_a30u1"]
 [ext_resource type="Texture2D" uid="uid://dymufetmmp5wy" path="res://assets/cursor.png" id="2_8wn0t"]
 [ext_resource type="Script" path="res://core/damage_components/2d/hurt_area_component.gd" id="3_qm3x4"]
 [ext_resource type="Script" path="res://core/damage_components/attack.gd" id="4_gji7e"]
+[ext_resource type="AudioStream" uid="uid://dhloxtgukmcjx" path="res://assets/sounds/mouse_down.mp3" id="5_plw2v"]
+[ext_resource type="AudioStream" uid="uid://b6oxjkuy636h8" path="res://assets/sounds/mouse_up.mp3" id="6_2na8i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lwswd"]
 radius = 7.07107
@@ -121,3 +123,11 @@ attack = SubResource("Resource_kgf7s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtAreaComponent2D"]
 shape = SubResource("CircleShape2D_lwswd")
+
+[node name="GrabAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_plw2v")
+bus = &"Sfx"
+
+[node name="UngrabAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2na8i")
+bus = &"Sfx"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bbtgbc264h2v0"
+path="res://.godot/imported/JDSherbert - Minigame Music Pack - Digital Waves.mp3-2d16d42229a5ee34e2ad3cd5ed33d653.mp3str"
+
+[deps]
+
+source_file="res://assets/JDSherbert - Minigame Music Pack - Digital Waves.mp3"
+dest_files=["res://.godot/imported/JDSherbert - Minigame Music Pack - Digital Waves.mp3-2d16d42229a5ee34e2ad3cd5ed33d653.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

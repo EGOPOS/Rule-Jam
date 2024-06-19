@@ -1,0 +1,245 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1yo1owokkiu8"]
+
+[ext_resource type="Texture2D" uid="uid://dymufetmmp5wy" path="res://assets/cursor.png" id="1_jplhw"]
+[ext_resource type="Texture2D" uid="uid://dmpk8nxlu0abp" path="res://assets/sky.png" id="1_uo7b0"]
+[ext_resource type="Texture2D" uid="uid://enojkc40ecrx" path="res://assets/geek.png" id="2_02mde"]
+[ext_resource type="Texture2D" uid="uid://c727ki62lceka" path="res://assets/ground.png" id="2_26pp0"]
+
+[sub_resource type="GDScript" id="GDScript_inbt3"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+	$AnimationPlayer.play(\"loop\")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_g8ijg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-59, -109)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Sprite2D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-89, -7)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/Sprite2D2:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bf0uo"]
+resource_name = "loop"
+length = 9.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8, 1.2, 2.2, 3.3, 4.7, 5, 6, 6.8, 7, 7.4, 7.6, 7.8, 8.3, 8.5, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-59, -109), Vector2(-1, 1), Vector2(-13.2933, 27.12), Vector2(4.99999, 28), Vector2(-9.00001, 28), Vector2(-1.45731, 29.7231), Vector2(3.99999, 181), Vector2(0.999992, 216), Vector2(-20.812, 205.82), Vector2(-6.99998, 213), Vector2(9.00001, 214), Vector2(19.975, 210.6), Vector2(14.8188, 213.6), Vector2(13, 215), Vector2(-5.15919, 143.966), Vector2(-19, 121), Vector2(-59, -109)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.7, 3.4, 5, 8.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 4, 3, 4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.2, 2.2, 3.3, 4.2, 5, 6.8, 7, 7.4, 7.8, 8.3, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.575959, -0.349066, 0.436332, 0.0, -0.302569, 0.0189683, 0.467358, -0.277342, -0.662663, -0.382929, -0.151307, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Sprite2D2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 4.1, 4.4, 5, 7.8, 8.3, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-89, -7), Vector2(-89, -7), Vector2(-3, 4), Vector2(-3, 4), Vector2(0.111115, 148.667), Vector2(1, 190), Vector2(1, 190), Vector2(-9.00001, 119), Vector2(-89, -7)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/Sprite2D2:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.7, 3.3, 3.5, 4.4, 4.9, 8.5, 8.8, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0, 1, 2, 1, 0, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Node2D:position")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.2, 1.3, 2.2, 2.3, 3.4, 3.9, 5.1, 5.3, 6.8, 7, 7.8, 8.3, 8.5, 9.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-1, -78), Vector2(-27, -81), Vector2(238, -85), Vector2(238, -85), Vector2(-162, -91), Vector2(-162, -91), Vector2(-162, -91), Vector2(-175, -90), Vector2(159, -105), Vector2(199, -96), Vector2(-100, -264), Vector2(-118, -142), Vector2(-103, -182), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ihlnm"]
+_data = {
+"RESET": SubResource("Animation_g8ijg"),
+"loop": SubResource("Animation_bf0uo")
+}
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_inbt3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(50000, 50000)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -25000.0
+offset_top = -25000.0
+offset_right = 25000.0
+offset_bottom = 25000.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.340165, 0.650166, 0.924111, 1)
+metadata/_edit_lock_ = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+process_mode = 3
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.05, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_uo7b0")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_26pp0")
+centered = false
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
+z_index = 1
+texture_filter = 1
+position = Vector2(-89, -7)
+texture = ExtResource("1_jplhw")
+hframes = 3
+frame = 1
+
+[node name="Camera2D" type="Camera2D" parent="Node2D/Sprite2D2"]
+position = Vector2(89, 7)
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+position_smoothing_speed = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+position = Vector2(-59, -109)
+texture = ExtResource("2_02mde")
+hframes = 8
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ihlnm")
+}

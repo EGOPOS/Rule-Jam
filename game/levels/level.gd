@@ -5,6 +5,7 @@ extends Node
 
 @export var collectable_item: CollectableItem
 @export var geek: Geek
+@onready var camera = $world/Camera2D
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED_HIDDEN
@@ -25,6 +26,13 @@ func on_geek_died():
 		get_tree().reload_current_scene()
 
 func on_collectable_item_collected():
+	camera.cursor = collectable_item
+	collectable_item.monitoring = false
+	collectable_item.monitorable = false
+	collectable_item.z_index = 1
+	get_tree().create_tween().tween_property(collectable_item, "scale", Vector2(5, 5), 1.0)
+	await get_tree().create_timer(2.0).timeout
+	
 	GameManager.transitions += 1
 	await Fade.fade_out().finished
 	

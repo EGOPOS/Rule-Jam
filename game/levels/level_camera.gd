@@ -1,6 +1,6 @@
 extends Camera2D
 
-@export var cursor: Cursor
+@export var cursor: Node2D
 @export var smoothing: float = 1
 
 var last_mouse_time: int

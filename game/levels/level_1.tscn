@@ -21,7 +21,7 @@ text = "Бери курсор
 и тащи гика дальше."
 
 [node name="SmoothTextArea2D3" parent="world" index="2" instance=ExtResource("3_f0dxw")]
-position = Vector2(1093, 586)
+position = Vector2(1066, 590)
 text = "Если гик где-то
 застрянет, всегда можно
 перезапустить уровень (R)"
@@ -48,24 +48,29 @@ position = Vector2(325, -25)
 [node name="CollectableItem" parent="world" index="9" instance=ExtResource("4_7ru5u")]
 position = Vector2(1346, 138)
 
-[node name="Barrel" parent="." index="3" instance=ExtResource("4_yavsc")]
+[node name="Sprite2D" parent="world/CollectableItem" index="0"]
+region_rect = Rect2(1.83411, 22.7365, 34.2331, 23.1731)
+
+[node name="Barrel" parent="." index="4" instance=ExtResource("4_yavsc")]
 position = Vector2(-93, 552)
 rotation = -0.691135
 
-[node name="Barrel2" parent="." index="4" instance=ExtResource("4_yavsc")]
+[node name="Barrel2" parent="." index="5" instance=ExtResource("4_yavsc")]
 position = Vector2(-23, 592)
 rotation = -0.836444
 
-[node name="Barrel5" parent="." index="5" instance=ExtResource("4_yavsc")]
+[node name="Barrel5" parent="." index="6" instance=ExtResource("4_yavsc")]
 position = Vector2(39, 523)
 rotation = 0.577831
 
-[node name="Barrel6" parent="." index="6" instance=ExtResource("4_yavsc")]
+[node name="Barrel6" parent="." index="7" instance=ExtResource("4_yavsc")]
 position = Vector2(429, 795)
 
-[node name="Barrel8" parent="." index="7" instance=ExtResource("4_yavsc")]
+[node name="Barrel8" parent="." index="8" instance=ExtResource("4_yavsc")]
 position = Vector2(458, 589)
 rotation = 0.577831
 
-[node name="Barrel10" parent="." index="8" instance=ExtResource("4_yavsc")]
+[node name="Barrel10" parent="." index="9" instance=ExtResource("4_yavsc")]
 position = Vector2(511, 536)
+
+[editable path="world/CollectableItem"]

@@ -1,11 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://bld35ta540et"]
+[gd_scene load_steps=21 format=3 uid="uid://bld35ta540et"]
 
 [ext_resource type="Script" path="res://game/grabbing/items/barrel.gd" id="1_lam7j"]
 [ext_resource type="Texture2D" uid="uid://c85lc702f7u3m" path="res://assets/barrel.png" id="2_h66sc"]
 [ext_resource type="Script" path="res://core/damage_components/2d/hit_area_component.gd" id="3_7o28e"]
 [ext_resource type="Script" path="res://core/damage_components/health_component.gd" id="4_bcmdm"]
 [ext_resource type="Script" path="res://core/damage_components/2d/hurt_area_component.gd" id="5_hlqs5"]
+[ext_resource type="Texture2D" uid="uid://kimt1rfk0ui8" path="res://assets/particles_boom.png" id="6_2ckk4"]
+[ext_resource type="Texture2D" uid="uid://dpaw8qch3wbrn" path="res://assets/particles_smoke.png" id="6_28hng"]
 [ext_resource type="Script" path="res://core/damage_components/attack.gd" id="6_si5ut"]
+[ext_resource type="AudioStream" uid="uid://c1ieeb842eeyb" path="res://assets/sounds/barrel_boom.mp3" id="7_y1l68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vsyt"]
 size = Vector2(26, 34)
@@ -17,17 +20,29 @@ damage = 1
 [sub_resource type="CircleShape2D" id="CircleShape2D_rbaqg"]
 radius = 52.0096
 
-[sub_resource type="Gradient" id="Gradient_vkt85"]
-offsets = PackedFloat32Array(0.368664, 0.654378, 0.741935, 0.834101, 1)
-colors = PackedColorArray(0.946261, 0.792624, 0.160678, 1, 1, 0.52216, 0.179152, 1, 0.874326, 0.123411, 0.154322, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vdn26"]
+particles_animation = true
+particles_anim_h_frames = 6
+particles_anim_v_frames = 1
+particles_anim_loop = true
+
+[sub_resource type="Gradient" id="Gradient_gg4v4"]
+offsets = PackedFloat32Array(0, 0.72997, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_5tkqe"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = true
 
 [sub_resource type="Gradient" id="Gradient_0ykbi"]
-offsets = PackedFloat32Array(0.442396, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0.759644, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="Gradient" id="Gradient_2beta"]
-offsets = PackedFloat32Array(0.170507, 0.442396, 1)
-colors = PackedColorArray(1, 0.195285, 0.135182, 1, 1, 0.75915, 0.0983773, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0.845697, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="Animation" id="Animation_yrs8e"]
 length = 0.001
@@ -217,6 +232,20 @@ tracks/7/keys = {
 "method": &"throw_bodies"
 }]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BoomAudioStreamPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uyofs"]
 _data = {
@@ -257,52 +286,63 @@ position = Vector2(-3, 2)
 shape = SubResource("CircleShape2D_rbaqg")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_vdn26")
 emitting = false
 lifetime = 1.5
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
+texture = ExtResource("6_2ckk4")
 particle_flag_align_y = true
 direction = Vector2(0, -1)
 spread = 90.0
 gravity = Vector2(0, 98)
 initial_velocity_min = 50.0
 initial_velocity_max = 125.0
-scale_amount_min = 1.2
-scale_amount_max = 5.0
-color_ramp = SubResource("Gradient_vkt85")
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_gg4v4")
+anim_speed_min = 1.0
+anim_speed_max = 3.0
 
 [node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_5tkqe")
 emitting = false
 amount = 4
 lifetime = 0.5
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
+texture = ExtResource("6_28hng")
 particle_flag_align_y = true
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 30.0
 initial_velocity_max = 30.0
-scale_amount_min = 6.0
-scale_amount_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_0ykbi")
+anim_speed_min = 1.0
+anim_speed_max = 3.0
 
 [node name="CPUParticles2D3" type="CPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_5tkqe")
 emitting = false
 amount = 4
 lifetime = 0.5
 one_shot = true
 speed_scale = 2.0
 explosiveness = 1.0
+texture = ExtResource("6_28hng")
 particle_flag_align_y = true
 spread = 180.0
 gravity = Vector2(0, 0)
 initial_velocity_min = 50.0
 initial_velocity_max = 50.0
-scale_amount_min = 6.0
-scale_amount_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_2beta")
+anim_speed_min = 1.0
+anim_speed_max = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 2)
@@ -317,3 +357,8 @@ libraries = {
 "": SubResource("AnimationLibrary_uyofs")
 }
 speed_scale = 1.5
+
+[node name="BoomAudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_y1l68")
+max_distance = 600.0
+bus = &"Sfx"

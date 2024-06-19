@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://pg107sskwqdf"]
+[gd_scene load_steps=9 format=3 uid="uid://pg107sskwqdf"]
 
 [ext_resource type="Script" path="res://game/userInterface/main_menu.gd" id="1_h1lnw"]
 [ext_resource type="PackedScene" uid="uid://b74fs1uol45q7" path="res://game/levels/level_1.tscn" id="2_c21eb"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://bnt3uacv55nwv" path="res://game/userInterface/settings.tscn" id="2_hj6gs"]
 [ext_resource type="AudioStream" uid="uid://8alplouulrdo" path="res://assets/ui/click2.wav" id="3_uovc3"]
 [ext_resource type="AudioStream" uid="uid://ctre8vdeyxrtj" path="res://assets/ui/click1.wav" id="4_5xs1d"]
+[ext_resource type="PackedScene" uid="uid://b1yo1owokkiu8" path="res://game/userInterface/menu_background.tscn" id="6_evrj3"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3o87c"]
+viewport_path = NodePath("Control/TextureRect/SubViewport")
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_h1lnw")
@@ -32,17 +36,23 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 2.0
-offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 1
+texture = SubResource("ViewportTexture_3o87c")
+
+[node name="SubViewport" type="SubViewport" parent="Control/TextureRect"]
+canvas_item_default_texture_filter = 0
+size = Vector2i(1152, 648)
+
+[node name="Node2D" parent="Control/TextureRect/SubViewport" instance=ExtResource("6_evrj3")]
 
 [node name="ButtonsMarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1

@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://8alplouulrdo" path="res://assets/ui/click2.wav" id="4_04tjk"]
 
 [node name="Settings" type="Control"]
-custom_minimum_size = Vector2(420, 250)
+custom_minimum_size = Vector2(630, 375)
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -29,6 +29,10 @@ option_selected_stream = ExtResource("4_04tjk")
 slider_drag_stream = ExtResource("3_rclaf")
 slider_changed_stream = ExtResource("4_04tjk")
 tab_selected_stream = ExtResource("3_rclaf")
+custom_bus_for_controls = {
+NodePath("../TabContainer/Звук/MarginContainer/VBoxContainer/HBoxContainer2/MusicHSlider"): 2,
+NodePath("../TabContainer/Звук/MarginContainer/VBoxContainer/HBoxContainer3/SfxHSlider"): 1
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ControlSoundsComponent"]
 stream = ExtResource("4_04tjk")
@@ -180,6 +184,7 @@ layout_mode = 2
 focus_mode = 0
 
 [node name="Scaling3dHBoxContainer" type="HBoxContainer" parent="TabContainer/Видео/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 90
 
@@ -204,6 +209,7 @@ popup/item_2/text = "FSR2"
 popup/item_2/id = 1
 
 [node name="TaaHBoxContainer" type="HBoxContainer" parent="TabContainer/Видео/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 90
 
@@ -245,6 +251,7 @@ popup/item_3/text = "8x"
 popup/item_3/id = 3
 
 [node name="MSAA3dHBoxContainer" type="HBoxContainer" parent="TabContainer/Видео/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 90
 
@@ -269,42 +276,3 @@ popup/item_2/text = "4x"
 popup/item_2/id = 1
 popup/item_3/text = "8x"
 popup/item_3/id = 3
-
-[node name="Управление" type="ScrollContainer" parent="TabContainer"]
-visible = false
-layout_mode = 2
-horizontal_scroll_mode = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Управление"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Управление/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 25
-
-[node name="WindowHBoxContainer" type="HBoxContainer" parent="TabContainer/Управление/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 90
-
-[node name="Label" type="Label" parent="TabContainer/Управление/MarginContainer/VBoxContainer/WindowHBoxContainer"]
-custom_minimum_size = Vector2(175, 0)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Окно"
-
-[node name="WindowOptionButton" type="OptionButton" parent="TabContainer/Управление/MarginContainer/VBoxContainer/WindowHBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-focus_mode = 0
-item_count = 2
-selected = 0
-popup/item_0/text = "windowed"
-popup/item_0/id = 0
-popup/item_1/text = "fullscreen"
-popup/item_1/id = 1
